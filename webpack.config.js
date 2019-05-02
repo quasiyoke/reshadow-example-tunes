@@ -12,4 +12,5 @@ module.exports = merge([
     title: 'Reshadow Tunes',
   }),
   parts.devServer(),
+  parts.js(),
 ]);

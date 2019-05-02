@@ -6,6 +6,17 @@ exports.devServer = () => ({
   },
 });
 
+exports.js = () => ({
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: 'babel-loader',
+      },
+    ],
+  },
+});
+
 exports.page = ({
   template,
   title,
