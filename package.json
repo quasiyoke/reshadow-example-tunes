@@ -4,7 +4,9 @@
   "description": "A catalog of iTunes assets",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --env production",
+    "build:dev": "webpack",
+    "dev": "webpack-dev-server --inline --hot"
   },
   "repository": {
     "type": "git",
