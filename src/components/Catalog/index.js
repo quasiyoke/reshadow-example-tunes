@@ -1,52 +1,66 @@
 import React, { Component } from 'react';
+import fetchJsonp from 'fetch-jsonp';
 import Query from '../Query';
 
 const INITIAL_QUERY = 'moby';
 
 export default class Catalog extends Component {
-  constructor() {
-    super();
-    this.state = { query: INITIAL_QUERY };
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: undefined, // Fetched data (we have nothing now)
+      query: INITIAL_QUERY, // Current search query
+    };
     this.fetch(INITIAL_QUERY);
   }
 
   setQuery = (query) => {
-    if (query !== this.state.fetchedQuery)
-      this.fetch(query);
-    }
-
     this.setState({
+      items: undefined, // We have no data for a fresh query.
       query,
     });
+    this.fetch(query);
   };
 
-  onFetchError = (response) => {
+  onFetchError(query, err) {
+    console.error(`Fetch Error for query "${query}":`, err);
+    if (query !== this.state.query) {
+      // We've received an error for a previous (outdated) query.
+      return; // Do nothing.
+    }
     this.setState({
-      ...this.state,
-      fetchedQuery: this.state.query,
-    })
-    console.error(response);
-  };
+      items: null, // `null` acts as an error flag.
+      query,
+    });
+  }
 
-  onFetchSuccess = (response) => {
-    console.log(response);
-  };
+  onFetchSuccess(query, items) {
+    console.log(`Fetch Success for query "${query}":`, items);
+    if (query !== this.state.query) {
+      // We've received a response for a previous (outdated) query.
+      return; // Do nothing.
+    }
+    this.setState({
+      items,
+      query,
+    });
+  }
 
   fetch(query) {
-    const param = encodeURIComponent(query);
-    fetch(`https://itunes.apple.com/search?term=${param}&limit=25`)
+    const encodedQuery = encodeURIComponent(query);
+    fetchJsonp(`https://itunes.apple.com/search?term=${encodedQuery}&limit=25`)
       .then(response => response.json())
-      .then(this.onFetchSuccess)
-      .catch(this.onFetchError);
+      .then(obj => obj.results)
+      .then(
+        this.onFetchSuccess.bind(this, query),
+        this.onFetchError.bind(this, query),
+      );
   }
 
-  render() {
-    const { query } = this.state;
-    return (
-      <Query
-        value={query}
-        onChange={this.setQuery}
-      />
-    );
-  }
+  render = () => (
+    <Query
+      value={this.state.query}
+      onChange={this.setQuery}
+    />
+  );
 }

@@ -5,18 +5,14 @@ import styles from './styles.css';
 export default class Query extends Component {
   constructor(props) {
     super(props);
-    const { value } = props;
     this.state = {
-      value,
+      value: props.value,
     };
   }
 
   onChange = (event) => {
-    const {
-      target: { value },
-    } = event;
     this.setState({
-      value,
+      value: event.target.value,
     });
   };
 
@@ -25,17 +21,14 @@ export default class Query extends Component {
     this.props.onChange(this.state.value);
   };
 
-  render() {
-    const { value } = this.state;
-    return styled(styles)(
-      <form onSubmit={this.onSubmit}>
-        <input
-          type="text"
-          value={value}
-          onChange={this.onChange}
-        />
-        <button>Search</button>
-      </form>
-    );
-  }
+  render = () => styled(styles)(
+    <form onSubmit={this.onSubmit}>
+      <input
+        type="text"
+        value={this.state.value}
+        onChange={this.onChange}
+      />
+      <button>Search</button>
+    </form>
+  );
 }
