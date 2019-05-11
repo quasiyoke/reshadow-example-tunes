@@ -465,7 +465,7 @@ export default () => styled(styles)(
 
 ```css
 header {
-  padding: 16px 20px;
+  padding: 4rem 5rem;
 }
 
 h1 {
@@ -502,7 +502,7 @@ Reshadow — это свежий взгляд на "CSS-in-JS" подход к �
 Откройте `dist/main.css`:
 
 ```css
-.___header_2fpe8_1{padding:16px 20px}.___h1_2fpe8_1{margin:0;font-family:sans-serif;color:#689d99}.___h1_2fpe8_1:first-letter{color:#236863}
+.___header_2fpe8_1{padding:4rem 5rem}.___h1_2fpe8_1{margin:0;font-family:sans-serif;color:#689d99}.___h1_2fpe8_1:first-letter{color:#236863}
 ```
 
 Как видите, все наши стили были минифицированы и сохранены в статическом CSS-файле, так что мы можем пользоваться старым добрым кешируемым подходом к доставке таблиц стилей на клиент, не отказываясь при том от потрясного удобства разработки (Developer Experience), которое нам даёт Reshadow.
@@ -555,12 +555,17 @@ export default ({
 В файле `src/components/Page/styles.css`:
 
 ```css
-:global(html), :global(body) {
-  margin: 0;
+:global(html) {
   height: 100%;
   background: #000;
-  font: 16px/1.3 sans-serif;
+  font: 4px/1.3 sans-serif;
   color: #fff;
+}
+
+:global(body) {
+  margin: 0;
+  height: 100%;
+  font-size: 4rem;
 }
 
 :global(main) {
@@ -570,19 +575,21 @@ export default ({
 }
 
 content {
-  padding: 0 20px;
   flex: 1 0 auto;
+  padding: 0 5rem;
 }
 ```
 
 TODO: рассказать про :global
+
+TODO: рассказать про rem
 
 Добавьте стили `styles.css` к компоненту `Footer` так же, как мы это делали для `Page`.
 В файле `src/compoenents/Footer/styles.css`:
 
 ```css
 footer {
-  padding: 16px 20px;
+  padding: 4rem 5rem;
   text-align: center;
 }
 ```
@@ -642,6 +649,10 @@ import Catalog from '../Catalog';
 ## Добавляем к компонентам вариативность
 
 Модификаторы
+
+## Error handling
+
+Element modifiers
 
 ## Вторая (светлая) тема для сайта Reshadow Tunes
 

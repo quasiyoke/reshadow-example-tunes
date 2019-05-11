@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import fetchJsonp from 'fetch-jsonp';
+import Tunes from '../Tunes';
 import Query from '../Query';
 
 const INITIAL_QUERY = 'moby';
@@ -58,9 +59,12 @@ export default class Catalog extends Component {
   }
 
   render = () => (
-    <Query
-      value={this.state.query}
-      onChange={this.setQuery}
-    />
+    <>
+      <Query
+        value={this.state.query}
+        onChange={this.setQuery}
+      />
+      <Tunes tunes={this.state.items} />
+    </>
   );
 }
