@@ -32,7 +32,7 @@ export default class Tunes extends Component {
 
   renderLoading = () => styled(styles)(
     <notification>
-      Please wait...
+      Please wait 🤞
     </notification>
   );
 
@@ -43,12 +43,19 @@ export default class Tunes extends Component {
   );
 
   renderTune = ({
+    artistName: artist,
     artworkUrl100: imageUrl,
-    trackId: id,
+    collectionCensoredName: collectionTitle,
+    collectionViewUrl: collectionUrl,
+    trackCensoredName: title,
+    trackViewUrl: url,
   }) => styled(styles)(
     <Tune
-      key={id}
+      key={url || collectionUrl}
+      artist={artist}
       imageUrl={imageUrl}
+      title={title || collectionTitle}
+      url={url || collectionUrl}
     />
   );
 }

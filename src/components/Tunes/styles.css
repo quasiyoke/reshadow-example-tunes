@@ -1,4 +1,22 @@
+tunes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 100px);
+  grid-gap: 3rem 4rem;
+}
+
 notification {
+  padding: 12rem 0 0;
   font-size: 10rem;
+  font-weight: 800;
   text-align: center;
+
+  &[|error] {
+    text-shadow: 0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 30px #f00,
+      0 0 40px #f00,
+      0 0 70px #f00,
+      0 0 80px #f00,
+      0 0 100px #f00;
+  }
 }

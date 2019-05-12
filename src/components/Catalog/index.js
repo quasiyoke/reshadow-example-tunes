@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import styled from 'reshadow';
 import fetchJsonp from 'fetch-jsonp';
 import Tunes from '../Tunes';
 import Query from '../Query';
+import styles from './styles.css';
 
-const INITIAL_QUERY = 'moby';
+const INITIAL_QUERY = 'shadow';
 
 export default class Catalog extends Component {
   constructor(props) {
@@ -49,7 +51,7 @@ export default class Catalog extends Component {
 
   fetch(query) {
     const encodedQuery = encodeURIComponent(query);
-    fetchJsonp(`https://itunes.apple.com/search?term=${encodedQuery}&limit=25`)
+    fetchJsonp(`https://itunes.apple.com/search?term=${encodedQuery}&limit=24`)
       .then(response => response.json())
       .then(obj => obj.results)
       .then(
@@ -58,13 +60,15 @@ export default class Catalog extends Component {
       );
   }
 
-  render = () => (
+  render = () => styled(styles)(
     <>
       <Query
         value={this.state.query}
         onChange={this.setQuery}
       />
-      <Tunes tunes={this.state.items} />
+      <tunes>
+        <Tunes tunes={this.state.items} />
+      </tunes>
     </>
   );
 }

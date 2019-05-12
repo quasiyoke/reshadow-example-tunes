@@ -366,7 +366,7 @@ npm install
 Установите `reshadow` и некоторые утилиты, чтобы склеить его с webpack:
 
 ```sh
-npm install --save reshadow@0.0.1-alpha.11
+npm install --save reshadow
 npm install --save-dev \
   css-loader@2.1.1 \
   mini-css-extract-plugin@0.6.0
@@ -579,6 +579,12 @@ content {
   padding: 0 5rem;
 }
 ```
+
+вообще рекомендация такая:
+- есть нативный тег для этого? если есть, используем его, если нет, называем его как семантически нужно и описываем фолбэк если надо (например, <icon as="span" />)
+- есть нативный атрибут?
+- есть ариа атрибут?
+- если нет ничего, то use:название
 
 TODO: рассказать про :global
 
