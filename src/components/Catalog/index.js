@@ -26,7 +26,7 @@ export default class Catalog extends Component {
   };
 
   onFetchError(query, err) {
-    console.error(`Fetch Error for query "${query}":`, err);
+    console.error(`Fetch Error for Query "${query}":`, err);
     if (query !== this.state.query) {
       // We've received an error for a previous (outdated) query.
       return; // Do nothing.
@@ -38,7 +38,7 @@ export default class Catalog extends Component {
   }
 
   onFetchSuccess(query, items) {
-    console.log(`Fetch Success for query "${query}":`, items);
+    console.log(`Fetch Success for Query "${query}":`, items);
     if (query !== this.state.query) {
       // We've received a response for a previous (outdated) query.
       return; // Do nothing.

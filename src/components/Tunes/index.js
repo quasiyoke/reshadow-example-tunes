@@ -43,19 +43,22 @@ export default class Tunes extends Component {
   );
 
   renderTune = ({
-    artistName: artist,
-    artworkUrl100: imageUrl,
-    collectionCensoredName: collectionTitle,
-    collectionViewUrl: collectionUrl,
-    trackCensoredName: title,
-    trackViewUrl: url,
+    artistName,
+    artworkUrl100,
+    collectionCensoredName,
+    collectionExplicitness,
+    collectionViewUrl,
+    trackCensoredName,
+    trackExplicitness,
+    trackViewUrl,
   }) => styled(styles)(
     <Tune
-      key={url || collectionUrl}
-      artist={artist}
-      imageUrl={imageUrl}
-      title={title || collectionTitle}
-      url={url || collectionUrl}
+      explicitness={trackExplicitness || collectionExplicitness}
+      key={trackViewUrl || collectionViewUrl}
+      artist={artistName}
+      imageUrl={artworkUrl100}
+      title={trackCensoredName || collectionCensoredName}
+      url={trackViewUrl || collectionViewUrl}
     />
   );
 }

@@ -4,6 +4,7 @@ import styles from './styles.css';
 
 export default ({
   artist,
+  explicitness,
   imageUrl,
   title,
   url,
@@ -12,8 +13,9 @@ export default ({
     href={url}
     target="_blank"
     rel="nofollow noopener"
+    use:explicitness={explicitness}
   >
     <img src={imageUrl} />
-    <h3>{`${artist} — ${title}`}</h3>
+    <title as="h3">{`${artist} — ${title}`}</title>
   </a>
 );
