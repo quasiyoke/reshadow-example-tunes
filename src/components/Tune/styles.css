@@ -1,5 +1,6 @@
 a {
   &, &:link {
+    position: relative;
     color: #fff;
     text-decoration: none;
     cursor: pointer;
@@ -18,6 +19,16 @@ a {
       text-decoration: underline;
     }
   }
+
+  &[use|explicitness=explicit] title:before {
+    content: "!";
+    margin-right: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    background: #f00;
+    font-weight: 800;
+    line-height: 2;
+  }
 }
 
 img {
@@ -28,7 +39,7 @@ img {
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cGF0aCBkPSJNNzcgNzBWMzBIMjN2MzlsMTQtMThhMyAzIDAgMCAxIDQgMGwxMCAxMyA4LTEwYTMgMyAwIDAgMSA0IDB6TTIxIDI1aDU4YzIgMCAzIDEgMyAydjQ2YzAgMS0xIDItMyAySDIxYy0yIDAtMy0xLTMtMlYyN2MwLTEgMS0yIDMtMnptNDUgMThjLTMgMC01LTItNS00IDAtMyAyLTUgNS01IDIgMCA0IDIgNCA1IDAgMi0yIDQtNCA0eiIgZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSIjMjIyIi8+PC9zdmc+);
 }
 
-h3 {
+title {
   margin: 2rem 0 0;
   font-size: 3rem;
   font-weight: normal;
