@@ -1,8 +1,15 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import { render } from 'react-dom';
 import App from './components/App';
 
-ReactDom.render(
-  <App />,
-  document.querySelector('main'),
-);
+function renderApp() {
+  const App = require('./components/App').default;
+  render(
+    <App />,
+    document.querySelector('main'),
+  );
+}
+
+renderApp();
+
+module.hot.accept(renderApp);

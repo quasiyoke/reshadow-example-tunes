@@ -1,5 +1,5 @@
 import React from 'react';
-import { hot } from 'react-hot-loader/root';
+import { hot } from 'react-hot-loader';
 import Catalog from '../Catalog';
 import Page from '../Page';
 
@@ -9,4 +9,4 @@ const App = () => (
   </Page>
 );
 
-export default hot(App);
+export default hot(module)(App);
