@@ -1,13 +1,13 @@
 {
   "name": "reshadow-example-tunes",
-  "version": "0.1.0",
-  "description": "Catalog of media assets",
-  "main": "index.js",
   "scripts": {
     "build": "NODE_ENV=production parcel build src/index.html",
     "build:dev": "NODE_ENV=development parcel build src/index.html",
     "dev": "NODE_ENV=development parcel src/index.html"
   },
+  "version": "0.1.0",
+  "description": "Catalog of media assets",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/quasiyoke/reshadow-example-tunes.git"
